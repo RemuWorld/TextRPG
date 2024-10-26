@@ -7,24 +7,51 @@ int main()
     double start, end;
     char playerName[21];
 
-    for(int i = 0; i<3; i++)
-    {
-        printf("...\n");
-        Sleep(600);
-    }
+    
     
     clrscr(); //clear screen
 
     /*
     ------------------------
-    Need a start screen here
+    'Need a start screen here'
     A: how?
     B: idk.. maybe using gotoxy?
 
     A: Isn't gotoxy trash?
     B: idk..?
+
+    A: Oh not bad..?
+    B: ¯\_(ツ)_/¯
     ------------------------
     */
+   
+    gotoxy(50, 60);
+    printf("........      ........    ..              ..    ........               .......       ........     ........\n");
+    printf("........      ........      ..          ..      ........               ........      ........     ........\n");
+    printf("   ..         ..              ..      ..           ..                  ...  ...      ..    ..     ..    ..\n");
+    printf("   ..         ..                ..  ..             ..                  ..    ..      ..    ..     ..      \n");
+    printf("   ..         ..                ..  ..             ..                  ..    ..      ..    ..     ..      \n");
+    printf("   ..         ........            ..               ..                  ...  ...      ........     ..  ....\n");
+    printf("   ..         ........            ..               ..                  .......       ........     ..  ....\n");
+    printf("   ..         ..                ..  ..             ..                  ..    ..      ..           ..    ..\n");
+    printf("   ..         ..              ..      ..           ..                  ..     ..     ..           ..    ..\n");
+    printf("   ..         ........      ..          ..         ..                  ..      ..    ..           ........\n");
+    printf("   ..         ........    ..              ..       ..                  ..       ..   ..           ........\n");
+
+    gotoxy(60, 65);
+    printf("Press any key to start");
+    kbhit();
+    if (getch() == !NULL)
+    {
+        for(int i = 0; i<3; i++)
+        {
+            printf("...\n");
+            Sleep(600);
+        }
+        clrscr();
+    }
+    
+
     gotoxy(0,10);
     printf("Enter Your name (Maximum: 10)\n\n>");
 

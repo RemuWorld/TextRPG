@@ -9,11 +9,16 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-void clrscr();
-int nickChoose(char playerName[21]);
-char* namePrint(char* playerName);
-int mobFinder();
-int battle(int selector, int level);
+void clrscr(); //clear screen
+void gotoxy(int x, int y);  //coordinates of print methods
+
+int nickChoose(char playerName[21]); //nickname choose
+char* namePrint(char* playerName);  //name paste
+
+int mobFinder();  //mob finder (random)
+int kashanta(int level);  //mob(easy) 1 "kashanta"
+
+int battle(int selector, int level); //battle mob
 
 
 #endif //TEXTPLAYER

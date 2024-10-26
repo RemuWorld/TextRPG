@@ -10,7 +10,7 @@ int main()
     for(int i = 0; i<3; i++)
     {
         printf("...\n");
-        Sleep(333);
+        Sleep(600);
     }
     
     clrscr(); //clear screen
@@ -25,7 +25,7 @@ int main()
     B: idk..?
     ------------------------
     */
-
+    gotoxy(0,10);
     printf("Enter Your name (Maximum: 10)\n\n>");
 
     for (;;)

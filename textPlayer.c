@@ -19,6 +19,8 @@ void clrscr()
     system("cls"); 
 }
 
+//User Mechanics
+
 int nickChoose(char playerName[21]) 
 {
     int nickChoosing = 1;
@@ -26,6 +28,7 @@ int nickChoose(char playerName[21])
     //This while statement runs until the user finishes writing their nickname.
     while (nickChoosing) 
     {
+
         size_t len = strlen(playerName);
         if (playerName[len - 1] == '\n') 
         {
@@ -36,7 +39,9 @@ int nickChoose(char playerName[21])
         // under 0 or above 10 is error
         if (0 >= len || len > 10) 
         {
-            printf("\nWrong input. Try again\n\n>");
+            clrscr();
+            gotoxy(0,10);
+            printf("\nWrong input. Try again (Maximum: 10)\n\n>");
             while (getchar() != '\n');
             return 1;
         }
@@ -53,13 +58,17 @@ int nickChoose(char playerName[21])
             if (response == 'y' || response == 'Y') 
             {
                 printf("Y");
+
                 nickChoosing = 0;
                 break;
             }
             else if (response == 'n' || response == 'N') 
             {
                 printf("N");
-                printf("\n\n\n");
+                Sleep(250);
+                clrscr();
+
+                gotoxy(0,10);
                 printf("Enter Your name (Maximum: 10)\n\n>");
                 return 1;
             }
@@ -68,9 +77,11 @@ int nickChoose(char playerName[21])
     namePrint(playerName);
     Sleep(500);
         
-    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n");
-    printf("Welcome %s. Fight for mobs out there!\n", playerName);
-    Sleep(500);
+    clrscr();
+    printf("Welcome %s. Fight for mobs out there!", playerName);
+    Sleep(2500);
+    clrscr();
+    
     return 0;
 }
 
@@ -129,6 +140,8 @@ int playerAction()
 	return false;
 }
 
+//Mob Mechanics
+
 int mobFinder() 
 {
     srand((unsigned)time(NULL));
@@ -159,31 +172,6 @@ int mobStatRandomizer(int randomMuch)
     return randomNumber;
 }
 
-int kashanta(int level) 
-{
-    int averageHealth = 300;
-    int averageDamage = 20;
-    int dodge = 2;
-
-//Mob "Kashanta" characteristics
-    mob kashanta = 
-    {
-        "Kashanta",
-        averageHealth + (level*6) + mobStatRandomizer(6),
-        averageDamage + (level*3) + mobStatRandomizer(5),
-        dodge + mobStatRandomizer(3)
-    };
-
-    while (kashanta.health > 0) 
-    {
-        printf("Kashanta's HP: %d",kashanta.health);
-
-        printf("'s HP:");
-        break;
-    }
-    return 0;
-}
-
 int battle(int selector, int level) 
 {
     int exp;
@@ -204,4 +192,38 @@ int battle(int selector, int level)
         exp = masterMob[selector](level);        
     }
     return exp;
+}
+
+//Mob Method
+
+int kashanta(int level) 
+{
+    int averageHealth = 300;
+    int averageDamage = 20;
+    int dodge = 2;
+
+    //Mob "Kashanta" characteristics
+    mob kashanta = 
+    {
+        "Kashanta",
+        averageHealth + (level*6) + mobStatRandomizer(6),
+        averageDamage + (level*3) + mobStatRandomizer(5),
+        dodge + mobStatRandomizer(3)
+    };
+
+    while (kashanta.health > 0) 
+    {
+        printf("Kashanta's HP: %d",kashanta.health);
+
+        printf("%s's HP:",namePrint("print"));
+        break;
+    }
+    return 0;
+}
+
+void gotoxy(int x, int y) {
+    COORD coord;
+    coord.X = x;
+    coord.Y = y;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
